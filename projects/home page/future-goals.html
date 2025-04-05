@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Goals</title>
+  <link rel="stylesheet" href="future-goals.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Future Goals Dashboard</h1>
+    </header>
+    <div class="dashboard">
+      <div class="column not-started">
+        <h2>Not Started</h2>
+        <div class="add-task">
+          <input type="text" id="taskInput" placeholder="Add a new goal...">
+          <button id="addTaskBtn">Add</button>
+        </div>
+        <div class="droppable" id="notStarted"></div>
+      </div>
+
+      <div class="column in-progress">
+        <h2>In Progress</h2>
+        <div class="droppable" id="inProgress"></div>
+      </div>
+
+      <div class="column done">
+        <h2>Done</h2>
+        <div class="droppable" id="done"></div>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2025 Future Goals Dashboard. All rights reserved.</p>
+    </footer>
+  </div>
+  <script src="future-goals.js"></script>
+</body>
+</html>

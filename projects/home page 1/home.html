@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #0078ff;
+            font-size: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .dashboard-container {
+            display: flex;
+            gap: 50px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            justify-content: center;
+        }
+
+        .section {
+            text-align: center;
+            width: 50%;
+        }
+
+        .section h2 {
+            font-size: 22px;
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+
+        .section .button {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #0078ff, #0056b3);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        .section ul li {
+            background: #e8f1fc;
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: #333;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section ul li span {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        footer {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Your Goals Dashboard</h1>
+    <div class="dashboard-container">
+        <div class="section">
+            <button class="button" onclick="location.href='goals-to-achieve1.html'">Goals</button>
+            <h2>Goals to Achieve</h2>
+            <ul>
+                <li>Goal 1 <span>✔</span></li>
+                <li>Goal 2 <span>✔</span></li>
+                <li>Goal 3 <span>✔</span></li>
+            </ul>
+        </div>
+        <div class="section">
+            <button class="button" onclick="location.href='future-goals1.html'">Goals</button>
+            <h2>Future Goals</h2>
+            <ul>
+                <li>Goal A <span>➔</span></li>
+                <li>Goal B <span>➔</span></li>
+                <li>Goal C <span>➔</span></li>
+            </ul>
+        </div>
+    </div>
+    <footer>© 2025 Goals Dashboard. All rights reserved.</footer>
+</body>
+</html>

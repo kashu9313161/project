@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List Tracker</title>
+  <link rel="stylesheet" href="check1.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>To-Do List Tracker</h1>
+    </header>
+    <main>
+      <section class="task-input">
+        <input type="text" id="taskInput" placeholder="Enter your task..." />
+        <select id="categoryInput">
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Fitness">Fitness</option><br>
+        </select>
+        <input type="datetime-local" id="timeInput" /><br><hr>
+        <button id="addTaskBtn">Add Task</button>
+      </section>
+
+      <section class="task-list">
+        <h2>Tasks</h2>
+        <ul id="taskList"></ul>
+      </section>
+
+      <section class="progress-tracker">
+        <h2>Progress Overview</h2>
+        <canvas id="progressChart"></canvas>
+      </section>
+    </main>
+  </div>
+  <script src="check1.js"></script>
+</body>
+</html>

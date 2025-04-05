@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goals to Achieve</title>
+  <link rel="stylesheet" href="goals-to-achieve1.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Goals to Achieve</h1>
+    </header>
+    <main>
+      <section class="task-input">
+        <input type="text" id="taskInput" placeholder="Enter your goal..." />
+        <select id="categoryInput">
+          <option value="Educational">Educational</option>
+          <option value="Professional">Professional</option>
+          <option value="Self">Self</option>
+        </select>
+        <input type="datetime-local" id="timeInput" /><br><hr>
+        <button id="addTaskBtn">Add Goal</button>
+      </section>
+
+      <section class="task-list">
+        <h2>Goals</h2>
+        <ul id="taskList">
+          <li class="placeholder">No goals added yet. Start by adding a new goal!</li>
+        </ul>
+      </section>
+
+      <section class="progress-tracker">
+        <h2>Progress Overview</h2>
+        <canvas id="progressChart"></canvas>
+      </section>
+    </main>
+  </div>
+  <script src="goals-to-achieve1.js"></script>
+</body>
+</html>

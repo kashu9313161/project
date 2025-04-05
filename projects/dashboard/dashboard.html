@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Board</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .dashboard {
+      display: flex;
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .column {
+      flex: 1;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .column h2 {
+      margin: 0 0 10px;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .not-started h2 {
+      background-color: #6c757d;
+    }
+
+    .in-progress h2 {
+      background-color: #007bff;
+    }
+
+    .done h2 {
+      background-color: #28a745;
+    }
+
+    .task {
+      background-color: #2a2a2a;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: grab;
+    }
+
+    .task:active {
+      cursor: grabbing;
+    }
+
+    .add-task {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .add-task input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .add-task button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .add-task button:hover {
+      background-color: #0056b3;
+    }
+
+    .droppable {
+      flex: 1;
+      min-height: 200px;
+      padding: 10px;
+      border: 2px dashed #444;
+      border-radius: 5px;
+    }
+
+    .droppable.over {
+      border-color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <div class="column not-started">
+      <h2>Not Started</h2>
+      <div class="add-task">
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <button id="addTaskBtn">Add</button>
+      </div>
+      <div class="droppable" id="notStarted"></div>
+    </div>
+
+    <div class="column in-progress">
+      <h2>In Progress</h2>
+      <div class="droppable" id="inProgress"></div>
+    </div>
+
+    <div class="column done">
+      <h2>Done</h2>
+      <div class="droppable" id="done"></div>
+    </div>
+  </div>
+
+  <script>
+    const addTaskBtn = document.getElementById('addTaskBtn');
+    const taskInput = document.getElementById('taskInput');
+    const notStarted = document.getElementById('notStarted');
+    const inProgress = document.getElementById('inProgress');
+    const done = document.getElementById('done');
+
+    addTaskBtn.addEventListener('click', () => {
+      const taskText = taskInput.value.trim();
+      if (taskText === '') {
+        alert('Task cannot be empty!');
+        return;
+      }
+      createTask(taskText, notStarted);
+      taskInput.value = '';
+    });
+
+    function createTask(text, container) {
+      const task = document.createElement('div');
+      task.classList.add('task');
+      task.textContent = text;
+      task.draggable = true;
+
+      task.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', task.textContent);
+        task.classList.add('dragging');
+      });
+
+      task.addEventListener('dragend', () => {
+        task.classList.remove('dragging');
+      });
+
+      container.appendChild(task);
+    }
+
+    document.querySelectorAll('.droppable').forEach((zone) => {
+      zone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        zone.classList.add('over');
+      });
+
+      zone.addEventListener('dragleave', () => {
+        zone.classList.remove('over');
+      });
+
+      zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const text = e.dataTransfer.getData('text/plain');
+        createTask(text, zone);
+        zone.classList.remove('over');
+      });
+    });
+  </script>
+</body>
+</html>

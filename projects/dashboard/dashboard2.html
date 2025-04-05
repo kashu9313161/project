@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Board</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    .board {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .column {
+      flex: 1;
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column h2 {
+      text-align: center;
+      color: #555;
+    }
+
+    .task {
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 5px;
+      cursor: grab;
+      text-align: center;
+    }
+
+    .task:active {
+      cursor: grabbing;
+    }
+
+    .task-placeholder {
+      height: 40px;
+      background: rgba(0, 123, 255, 0.2);
+      border: 2px dashed #007bff;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+
+    .add-task {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .add-task input {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .add-task button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-task button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Task Board</h1>
+    </header>
+    <main>
+      <div class="add-task">
+        <input type="text" id="taskInput" placeholder="Enter a new task...">
+        <button onclick="addTask()">Add Task</button>
+      </div>
+      <div class="board">
+        <div class="column" id="notStarted">
+          <h2>Not Started</h2>
+        </div>
+        <div class="column" id="inProgress">
+          <h2>In Progress</h2>
+        </div>
+        <div class="column" id="done">
+          <h2>Done</h2>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById("taskInput");
+    const notStarted = document.getElementById("notStarted");
+
+    function addTask() {
+      const taskText = taskInput.value.trim();
+      if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      const task = document.createElement("div");
+      task.className = "task";
+      task.textContent = taskText;
+      task.draggable = true;
+
+      task.addEventListener("dragstart", dragStart);
+      task.addEventListener("dragend", dragEnd);
+
+      notStarted.appendChild(task);
+      taskInput.value = "";
+    }
+
+    function dragStart(e) {
+      e.dataTransfer.setData("text/plain", e.target.id);
+      e.target.classList.add("dragging");
+    }
+
+    function dragEnd(e) {
+      e.target.classList.remove("dragging");
+    }
+
+    document.querySelectorAll(".column").forEach((column) => {
+      column.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(column, e.clientY);
+        const dragging = document.querySelector(".dragging");
+
+        if (afterElement == null) {
+          column.appendChild(dragging);
+        } else {
+          column.insertBefore(dragging, afterElement);
+        }
+      });
+
+      column.addEventListener("drop", (e) => {
+        e.preventDefault();
+      });
+    });
+
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll(".task:not(.dragging)")];
+
+      return draggableElements.reduce(
+        (closest, child) => {
+          const box = child.getBoundingClientRect();
+          const offset = y - box.top - box.height / 2;
+          if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+          } else {
+            return closest;
+          }
+        },
+        { offset: Number.NEGATIVE_INFINITY }
+      ).element;
+    }
+  </script>
+</body>
+</html>

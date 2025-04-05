@@ -1,0 +1,240 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.container, .dashboard {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header, .home {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1, .home h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.home ul {
+  list-style: none;
+  padding: 0;
+}
+
+.home ul li {
+  margin: 20px 0;
+}
+
+.home ul li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.home ul li a:hover {
+  color: #0056b3;
+}
+
+/* Task Input */
+.task-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-input input,
+.task-input select,
+.task-input #timeInput {
+  width: 30%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.task-input button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.task-input button:hover {
+  background-color: #0056b3;
+}
+
+/* Task List */
+.task-list {
+  margin-bottom: 20px;
+}
+
+.task-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  padding: 10px;
+  margin: 5px 0;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.task-list .complete {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.task-list button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.task-list button:hover {
+  background-color: #a71d2a;
+}
+
+.task-list .edit-btn {
+  background-color: #ffc107;
+}
+
+.task-list .edit-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Progress Tracker */
+.progress-tracker {
+  text-align: center;
+}
+
+canvas {
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+/* Dashboard */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fffefe;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.dashboard {
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.column {
+  flex: 1;
+  background-color: #000000;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.column h2 {
+  margin: 0 0 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.not-started h2 {
+  background-color: #6c757d;
+}
+
+.in-progress h2 {
+  background-color: #1ba5e6;
+}
+
+.done h2 {
+  background-color: #28a745;
+}
+
+.task {
+  background-color: #2a2a2a;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: grab;
+  border: 1px solid #ddd;
+}
+
+.task:active {
+  cursor: grabbing;
+}
+
+.add-task {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.add-task input,
+.add-task select,
+.add-task #timeInput {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+
+.add-task button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.add-task button:hover {
+  background-color: #0056b3;
+}
+
+.droppable {
+  flex: 1;
+  min-height: 200px;
+  padding: 10px;
+  border: 2px dashed #444;
+  border-radius: 5px;
+}
+
+.droppable.over {
+  border-color: #007bff;
+}

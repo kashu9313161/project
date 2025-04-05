@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Board</title>
+  <link rel="stylesheet" href="check5.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
+</head>
+<body>
+  <div class="dashboard">
+    <div class="column not-started">
+      <h2>Not Started</h2>
+      <div class="add-task">
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <select id="categoryInput">
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Fitness">Fitness</option>
+        </select>
+        <input type="datetime-local" id="timeInput" />
+        <button id="addTaskBtn">Add</button>
+      </div>
+      <div class="droppable" id="notStarted"></div>
+    </div>
+
+    <div class="column in-progress">
+      <h2>In Progress</h2>
+      <div class="droppable" id="inProgress"></div>
+    </div>
+
+    <div class="column done">
+      <h2>Done</h2>
+      <div class="droppable" id="done"></div>
+    </div>
+  </div>
+
+  <section class="progress-tracker">
+    <h2>Progress Overview</h2>
+    <canvas id="progressChart"></canvas>
+  </section>
+  
+  <script src="check5.js"></script>
+</body>
+</html>
